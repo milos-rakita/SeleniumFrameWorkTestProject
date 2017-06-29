@@ -1,0 +1,5 @@
+E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework\bin\Debug\EAAutoFramework.dll
+E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework\bin\Debug\EAAutoFramework.pdb
+E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework\obj\Debug\EAAutoFramework.csprojResolveAssemblyReference.cache
+E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework\obj\Debug\EAAutoFramework.dll
+E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework\obj\Debug\EAAutoFramework.pdb
