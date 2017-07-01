@@ -6,6 +6,7 @@ using EAEmployeeTest.Pages;
 using EAAutoFramework.Base;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
+using EAAutoFramework.Helpers;
 
 namespace EAEmployeeTest
 {
@@ -46,16 +47,45 @@ namespace EAEmployeeTest
         {
             //DriverContext.Driver = new FirefoxDriver();
             //DriverContext.Driver.Navigate().GoToUrl(url);
+
+            LogHelper.CreateLogFile();
+
+            string fileName = Environment.CurrentDirectory.ToString() + "\\Data\\Login.xlsx";
+            LogHelper.Write("Opened the Data file for Login!!!");
+            ExcelHelper.PopulateInCollection(fileName);
+            
             OpenBrowser(BrowsrType.Chrome);
             DriverContext.Browser.GoToUrl(url);
 
 
             CurrentPage = GetInstance<LoginPage>();
             CurrentPage.As<LoginPage>().ClickLoginLink();
-            CurrentPage.As<LoginPage>().Login("admin","password");
+            CurrentPage.As<LoginPage>().Login(ExcelHelper.ReadData(1,"UserName"), ExcelHelper.ReadData(1, ""));
 
             CurrentPage = CurrentPage.As<LoginPage>().ClickEmployeeList();
             CurrentPage.As<EmployeePage>().ClickCreateNew();
+        }
+        [TestMethod]
+        public void TableOperation()
+        {
+            LogHelper.CreateLogFile();
+
+            string fileName = Environment.CurrentDirectory.ToString() + "\\Data\\Login.xlsx";
+            LogHelper.Write("Opened the Data file for Login!!!");
+            ExcelHelper.PopulateInCollection(fileName);
+
+            OpenBrowser(BrowsrType.Chrome);
+            DriverContext.Browser.GoToUrl(url);
+
+            CurrentPage = GetInstance<LoginPage>();
+            CurrentPage.As<LoginPage>().ClickLoginLink();
+            CurrentPage.As<LoginPage>().Login(ExcelHelper.ReadData(1, "UserName"), ExcelHelper.ReadData(1, ""));
+
+            CurrentPage = CurrentPage.As<LoginPage>().ClickEmployeeList();
+            var table = CurrentPage.As<EmployeePage>().GetEmployeeList();
+            HtmlTableHelper.ReadTable(table);
+            HtmlTableHelper.PerformActionOnCell("5","Name","Ramesh","Edit");
+
         }
 
         public void Login()

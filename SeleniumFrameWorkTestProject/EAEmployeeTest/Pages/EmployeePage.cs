@@ -15,14 +15,24 @@ namespace EAEmployeeTest.Pages
        // public EmployeePage(IWebDriver driver) : base(driver) { }
 
         [FindsBy(How = How.Name, Using = "searchTerm")]
-        public IWebElement txtSearch { get; set; }
+        IWebElement txtSearch { get; set; }
 
         [FindsBy(How = How.LinkText, Using = "Create New")]
-        public IWebElement lnkCreateNew { get; set; }
+        IWebElement lnkCreateNew { get; set; }
+
+        [FindsBy(How = How.ClassName, Using = "table")]
+        IWebElement tblEmployeeList { get; set; }
+
 
         public void ClickCreateNew()
         {
             lnkCreateNew.Click();
         }
+
+        public IWebElement GetEmployeeList()
+        {
+            return tblEmployeeList;
+        }
+
     }
 }
