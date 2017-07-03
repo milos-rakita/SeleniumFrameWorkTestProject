@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EAAutoFramework.Config;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,8 @@ namespace EAAutoFramework.Helpers
         //create a file wich can store the log information
         public static void CreateLogFile()
         {
-            string dir = @"E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework";
+            //string dir = @"E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework";
+            string dir = Settings.LogPath;
             if (Directory.Exists(dir))
             {
                 streamW = File.AppendText(dir + _logFileName + ".log");
