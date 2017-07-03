@@ -7,6 +7,7 @@ using EAAutoFramework.Base;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
 using EAAutoFramework.Helpers;
+using EAAutoFramework.Config;
 
 namespace EAEmployeeTest
 {
@@ -14,7 +15,7 @@ namespace EAEmployeeTest
     public class UnitTest1 :Base
     {
 
-        string url = "http://localhost/EmployeeApp";
+        //string url = ConfigReader.InitializeTest();
         private void OpenBrowser(BrowsrType bt)
         {
             switch (bt)
@@ -47,6 +48,7 @@ namespace EAEmployeeTest
         {
             //DriverContext.Driver = new FirefoxDriver();
             //DriverContext.Driver.Navigate().GoToUrl(url);
+            ConfigReader.SetFrameworkSettings();
 
             LogHelper.CreateLogFile();
 
@@ -55,11 +57,12 @@ namespace EAEmployeeTest
             ExcelHelper.PopulateInCollection(fileName);
             
             OpenBrowser(BrowsrType.Chrome);
-            DriverContext.Browser.GoToUrl(url);
+            DriverContext.Browser.GoToUrl(Settings.AUT);
 
 
             CurrentPage = GetInstance<LoginPage>();
             CurrentPage.As<LoginPage>().ClickLoginLink();
+            CurrentPage.As<LoginPage>().CheckIfLoginExist();
             CurrentPage.As<LoginPage>().Login(ExcelHelper.ReadData(1,"UserName"), ExcelHelper.ReadData(1, ""));
 
             CurrentPage = CurrentPage.As<LoginPage>().ClickEmployeeList();
@@ -75,7 +78,7 @@ namespace EAEmployeeTest
             ExcelHelper.PopulateInCollection(fileName);
 
             OpenBrowser(BrowsrType.Chrome);
-            DriverContext.Browser.GoToUrl(url);
+            DriverContext.Browser.GoToUrl(Settings.AUT);
 
             CurrentPage = GetInstance<LoginPage>();
             CurrentPage.As<LoginPage>().ClickLoginLink();

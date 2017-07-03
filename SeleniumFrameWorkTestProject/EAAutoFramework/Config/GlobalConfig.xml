@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EAAutoFramework>
+  <RunSettings>
+    <AUTO>http://localhost/EmployeeApp</AUTO>
+    <Browser>Firefox</Browser>
+    <TestType>SmokeTest</TestType>
+    <IsLog>Y</IsLog>
+    <LogPath>@E:\SeleniumProjekti\SeleniumFrameWorkTestProject\SeleniumFrameWorkTestProject\EAAutoFramework</LogPath>
+    <BuildName>DemoBuild</BuildName>
+    <IsReport>N</IsReport>
+    <UserName>EAAutoTeam</UserName>
+    <Technology>Selenium</Technology>
+  </RunSettings>
+</EAAutoFramework>
